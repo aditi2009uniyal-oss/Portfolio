@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditi | My Projects</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: url("project.jpeg") no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      background: linear-gradient(90deg, rgb(236,125,202), #ea2fff);
+      backdrop-filter: blur(10px);
+      padding: 0.8rem 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .navbar-brand { color: white !important; font-weight: 700; }
+
+    /* ===== BURGER BUTTON ===== */
+    .offcanvas-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1051;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .offcanvas-btn span {
+      width: 28px; height: 3px; background: white; border-radius: 3px;
+      transition: 0.4s ease;
+    }
+    .offcanvas-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .offcanvas-btn.active span:nth-child(2) { opacity: 0; }
+    .offcanvas-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ===== SIDE MENU ===== */
+    .offcanvas {
+      background: url("backmenu.jpeg") no-repeat center center;
+      background-size: cover;
+    }
+    .offcanvas-body a {
+      color: white; text-decoration: none; font-size: 1.2rem;
+      font-weight: 500; display: block; margin-bottom: 14px; transition: 0.3s;
+    }
+    .offcanvas-body a:hover {
+      color: #fff;
+      text-shadow: 0 0 8px #ffb7ff, 0 0 14px #ff8cff, 0 0 20px #ff58ff;
+      transform: scale(1.06);
+    }
+
+   /* ===== PROJECT CARDS ===== */
+.project-card {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #F2ECE1;        /* soft cream */
+  border: 2px solid #ffffff80;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  color: black;               /* because background is light */
+  transition: 0.3s;
+}
+.project-card h5 {
+  color: #4B2E69;
+}
+
+.project-card p {
+  color: #5d3838;
+}
+
+.project-card:hover { transform: scale(1.05); }
+.project-card img { height: 180px; object-fit: cover; width: 100%; }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-auto" href="#">Aditi Digital Playground</a>
+    </div>
+  </nav>
+
+  <!-- BURGER BUTTON -->
+  <button class="offcanvas-btn" data-bs-toggle="offcanvas" data-bs-target="#sideMenu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- SIDE MENU -->
+  <div class="offcanvas offcanvas-start text-white" id="sideMenu">
+    <div class="offcanvas-header">
+      <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <a href="index.html">Home</a>
+      <a href="Aboutme.html">About</a>
+      <a href="qualification.html">Qualification</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="text-center py-5 text-white">
+    <h1 class="fw-bold"><b>My Projects</b></h1>
+    <p class="text-light"><b>A showcase of the websites, graphic designs I’ve built</b></p>
+  </header>
+
+<!-- PROJECTS CAROUSEL -->
+<div id="projectsCarousel" class="carousel slide">
+  <div class="carousel-inner">
+
+    <!-- Slide 1 -->
+<div class="carousel-item active">
+  <div class="d-flex justify-content-center gap-4 flex-wrap">
+
+    <div class="card project-card" style="width: 20rem;">
+      <img src="Project1.png" class="card-img-top" alt="Project1">
+      <div class="card-body text-center">
+        <h5 class="fw-semibold">My First Website</h5>
+        <p class="text-dark">A simple responsive landing page built with Bootstrap.</p>
+        <a href="Indian art/Index.html" target="_blank" class="btn btn-dark rounded-pill px-4 mt-2">View Website</a>
+      </div>
+    </div>
+
+    <div class="card project-card" style="width: 20rem;">
+      <img src="Project2.png" class="card-img-top" alt="Project2">
+      <div class="card-body text-center">
+        <h5 class="fw-semibold">Graphic Design</h5>
+        <p class="text-dark">A curated gallery of my Canva creations.</p>
+        <a href="graphic-design.html" target="_blank" class="btn btn-dark rounded-pill px-4 mt-2">View Designs</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="carousel-item">
+  <div class="d-flex justify-content-center gap-4 flex-wrap">
+
+    <div class="card project-card" style="width: 20rem;">
+      <img src="Project3.png" class="card-img-top" alt="Project3">
+      <div class="card-body text-center">
+        <h5 class="fw-semibold">Bakery Website</h5>
+        <p class="text-dark">A pastel-themed bakery website with carousel animations.</p>
+        <a href="Bakery/Index.html" target="_blank" class="btn btn-dark rounded-pill px-4 mt-2">Explore Website</a>
+      </div>
+    </div>
+
+    <div class="card project-card" style="width: 20rem;">
+      <img src="Project4.png" class="card-img-top" alt="Project4">
+      <div class="card-body text-center">
+        <h5 class="fw-semibold">Brain Spark</h5>
+        <p class="text-dark">An interactive general knowledge quiz app built with JavaScript.</p>
+        <a href="Brain Spark/index.html" target="_blank" class="btn btn-dark rounded-pill px-4 mt-2">Play Quiz</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item">
+      <div class="d-flex justify-content-center">
+        <div class="card project-card" style="width: 20rem;">
+          <img src="Project5.png" class="card-img-top" alt="Presentations">
+          <div class="card-body text-center">
+            <h5 class="fw-semibold">Presentations</h5>
+            <p class="text-dark">A collection of my UI/UX case study PPTs.</p>
+
+            <a href="presentations/ppt1.html" class="btn btn-dark rounded-pill px-4 mt-2" target="_blank">
+              View design
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Controls OUTSIDE the carousel-inner -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#projectsCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+
+</div>
+
+
+  <footer class="bg-dark text-white text-center py-3 mt-4">
+    <p>© 2025 Aditi Uniyal | All rights reserved</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Burger Animation -->
+  <script>
+    const btn = document.querySelector('.offcanvas-btn');
+    const canvas = document.getElementById('sideMenu');
+    btn.addEventListener('click', () => btn.classList.toggle('active'));
+    canvas.addEventListener('hidden.bs.offcanvas', () => btn.classList.remove('active'));
+  </script>
+
+</body>
+</html>

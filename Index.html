@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aditi Digital Playground</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<!-- TOP NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold ms-auto" href="#">Aditi Digital Playground</a>
+  </div>
+</nav>
+
+<!-- BURGER BUTTON -->
+<button class="offcanvas-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<!-- OFFCANVAS MENU -->
+<div class="offcanvas offcanvas-start text-white" id="sideMenu" style="
+  background: url('backmenu.jpeg') no-repeat center center;
+  background-size: cover;
+">
+
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title text-white" id="offcanvasLabel"></h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-unstyled">
+      <li><a class="text-white d-block py-2" href="#">Home</a></li>
+      <li><a class="text-white d-block py-2" href="Aboutme.html">About</a></li>
+      <li><a class="text-white d-block py-2" href="contact.html">Contact</a></li>
+      <li><a class="text-white d-block py-2" href="qualification.html">Qualification</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- HERO SECTION -->
+<section id="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="hero-content">
+    <h1 class="fade-up">Hi, I'm <span class="highlight">Aditi 🌺</span></h1>
+    <p class="fade-up delay-1">I blend creativity and technology through web development & graphic design.</p>
+    <img src="photo.png" alt="Aditi" class="hero-img fade-up delay-2">
+    <a href="projects.html" class="btn btn-lg custom-purple-btn fade-up delay-3">View My Work</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-3">
+  <p>© 2025 Aditi Uniyal | All rights reserved</p>
+</footer>
+
+<!-- BOOTSTRAP JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- TOGGLE BUTTON ANIMATION -->
+<script>
+  const btn = document.querySelector('.offcanvas-btn');
+  const offcanvasEl = document.getElementById('sideMenu');
+  btn.addEventListener('click', () => btn.classList.toggle('active'));
+  offcanvasEl.addEventListener('hidden.bs.offcanvas', () => btn.classList.remove('active'));
+</script>
+
+</body>
+</html>
