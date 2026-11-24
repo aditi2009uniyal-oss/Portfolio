@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Qualification | Aditi Digital Playground</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+
+  <style>
+
+    :root {
+      --accent: #6c63ff;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('fairy.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background-color: #4b2e83;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+    }
+
+    /* BURGER BUTTON */
+    .offcanvas-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 35px;
+      height: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 2000;
+      background: transparent;
+      border: none;
+    }
+
+    .offcanvas-btn span {
+      display: block;
+      height: 4px;
+      background: #fff;
+      border-radius: 5px;
+    }
+
+    /* OFFCANVAS MENU */
+    .offcanvas-start {
+      background: url('backmenu.jpeg') no-repeat center center;
+      background-size: cover;
+    }
+
+    .offcanvas-body ul li a {
+      color: #fff;
+      font-weight: 500;
+      text-decoration: none;
+      display: block;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .offcanvas-body ul li a:hover {
+      color: #d1c4ff;
+    }
+
+    /* MAIN HEADING */
+    .qualification-title {
+      text-align: center;
+      font-size: 40px;
+      font-weight: 700;
+      color: #e5d7c9;
+      margin-top: 60px;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .qualification-subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: white;
+      margin-bottom: 40px;
+      animation: fadeInUp 1.2s ease forwards;
+    }
+
+    /* QUALIFICATION BOX */
+    .qualification-box {
+      max-width: 950px;
+      margin: 30px auto 100px;
+      padding: 45px;
+
+      background: linear-gradient(
+        135deg,
+        rgba(255, 205, 255, 0.25),
+        rgba(199, 223, 255, 0.20),
+        rgba(255, 239, 214, 0.25)
+      );
+
+      backdrop-filter: blur(18px);
+      border-radius: 30px;
+      border: 2px solid rgba(255,255,255,0.35);
+
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+
+      animation: fadeBox 1.2s ease forwards;
+    }
+
+    /* EDUCATION CARDS */
+    .education-card {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-left: 5px solid #d8b4fe;
+      border-radius: 18px;
+      padding: 25px;
+      margin-bottom: 25px;
+      transition: 0.3s ease;
+    }
+
+    .education-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.23);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .education-card h3 {
+      color: #ffebe8;
+      font-size: 23px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .education-card h5 {
+      color: #f8c8ff;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .education-card p {
+      color: white;
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 5px;
+    }
+
+    .education-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    /* SKILLS SECTION */
+    .skills-heading {
+      text-align: center;
+      color: #ffebe8;
+      font-weight: 700;
+      margin-top: 40px;
+      margin-bottom: 25px;
+    }
+
+    .skill-category {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .skill-category h5 {
+      color: #ffebe8;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
+
+    .skills {
+      text-align: center;
+    }
+
+    .skills span {
+      display: inline-block;
+      background: rgba(108,99,255,0.35);
+      color: white;
+      padding: 9px 18px;
+      margin: 6px;
+      border-radius: 20px;
+      font-weight: 500;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: 0.3s;
+    }
+
+    .skills span:hover {
+      background: #6c63ff;
+      transform: translateY(-4px);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeBox {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+
+      .qualification-box {
+        margin: 30px 15px 60px;
+        padding: 25px;
+      }
+
+      .qualification-title {
+        font-size: 30px;
+      }
+
+      .education-card h3 {
+        font-size: 20px;
+      }
+
+      .education-card p {
+        font-size: 14px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+
+    <div class="container-fluid">
+
+      <a class="navbar-brand fw-bold ms-auto" href="index.html">
+        Aditi Digital Playground
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- BURGER BUTTON -->
+  <button class="offcanvas-btn"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#sideMenu">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </button>
+
+
+  <!-- OFFCANVAS SIDE MENU -->
+  <div class="offcanvas offcanvas-start text-white" id="sideMenu">
+
+    <div class="offcanvas-header">
+
+      <h5 class="offcanvas-title text-white"></h5>
+
+      <button type="button"
+        class="btn-close btn-close-white"
+        data-bs-dismiss="offcanvas">
+      </button>
+
+    </div>
+
+    <div class="offcanvas-body">
+
+      <ul class="list-unstyled">
+
+        <li><a href="index.html">Home</a></li>
+
+        <li><a href="Aboutme.html">About</a></li>
+
+        <li><a href="contact.html">Contact</a></li>
+
+        <li><a href="qualification.html">Qualification</a></li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <!-- QUALIFICATION HEADING -->
+  <h1 class="qualification-title">
+    My Qualifications 🎓
+  </h1>
+
+  <p class="qualification-subtitle">
+    Every step is a part of my learning journey ✨
+  </p>
+
+
+  <!-- MAIN QUALIFICATION BOX -->
+  <div class="qualification-box">
+
+
+    <!-- 10TH QUALIFICATION -->
+    <div class="education-card">
+
+      <div class="education-icon">📚</div>
+
+      <h3>Secondary Education (Class 10th)</h3>
+
+      <h5>Central Board of Secondary Education (CBSE)</h5>
+
+      <p>
+        <strong>School:</strong>
+        A G DAV Centenary Public School, Model Town, Delhi
+      </p>
+
+      <p>
+        <strong>Board:</strong> CBSE
+      </p>
+
+      <p>
+        <strong>Passing Year:</strong> 2024
+      </p>
+
+      <p>
+        <strong>Result:</strong> PASS
+      </p>
+
+      <p>
+        <strong>Percentage:</strong> 77.8%
+      </p>
+
+    </div>
+
+
+    <!-- DIPLOMA QUALIFICATION -->
+    <div class="education-card">
+
+      <div class="education-icon">💻</div>
+
+      <h3>Diploma in Computer Engineering</h3>
+
+      <h5>Kasturba DSEU Campus, Pitampura</h5>
+
+      <p>
+        <strong>Course:</strong>
+        Diploma in Computer Engineering
+      </p>
+
+      <p>
+        <strong>Branch:</strong>
+        Computer Engineering
+      </p>
+
+      <p>
+        <strong>Institute:</strong>
+        Kasturba DSEU, Pitampura
+      </p>
+
+      <p>
+        <strong>Academic Status:</strong>
+        Final Year Student
+      </p>
+
+    </div>
+
+
+    <!-- FUTURE GOALS -->
+    <div class="education-card">
+
+      <div class="education-icon">🌟</div>
+
+      <h3>Future Learning Goals</h3>
+
+      <h5>Continuing My Learning Journey</h5>
+
+      <p>
+        I look forward to improving my technical knowledge,
+        learning new programming languages and exploring
+        opportunities in the field of technology.
+      </p>
+
+    </div>
+
+
+    <!-- TECHNICAL SKILLS -->
+    <h3 class="skills-heading">
+      My Technical Skills 💜
+    </h3>
+
+
+    <!-- GOOD KNOWLEDGE -->
+    <div class="skill-category">
+
+      <h5>Good Knowledge ✨</h5>
+
+      <div class="skills">
+
+        <span>Object-Oriented Programming</span>
+
+        <span>HTML</span>
+
+        <span>CSS</span>
+
+        <span>Bootstrap</span>
+
+        <span>SQL</span>
+
+      </div>
+
+    </div>
+
+
+    <!-- BASIC KNOWLEDGE -->
+    <div class="skill-category">
+
+      <h5>Basic Knowledge 🌱</h5>
+
+      <div class="skills">
+
+        <span>Python</span>
+
+        <span>Java</span>
+
+        <span>C Programming</span>
+
+        <span>DSA in C</span>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white text-center py-3">
+
+    <p>© 2025 Aditi Uniyal | All rights reserved</p>
+
+  </footer>
+
+
+  <!-- BOOTSTRAP JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <!-- TOGGLE BUTTON ANIMATION -->
+  <script>
+
+    const btn = document.querySelector('.offcanvas-btn');
+
+    const offcanvasEl = document.getElementById('sideMenu');
+
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('active');
+    });
+
+    offcanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+      btn.classList.remove('active');
+    });
+
+  </script>
+
+</body>
+</html>
+
