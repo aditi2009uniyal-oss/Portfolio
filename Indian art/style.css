@@ -1,0 +1,119 @@
+ body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff8f0;
+      color: #333;
+    }
+    .hero {
+      background: url('art-background.jpg') center/cover no-repeat;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+    .section-title {
+      color: #d35400;
+      margin-bottom: 20px;
+    }
+    .contact-info p {
+      margin-bottom: 5px;
+    
+    }
+body{
+    background-color: burlywood;
+}
+body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+  .square-card1{
+      background-image: url('image.png');
+    }
+
+    /* Navbar container */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      background: linear-gradient(90deg, brown, #feb47b); 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Navbar links */
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      border-radius: 25px;
+    }
+
+    /* Hover effect */
+    .navbar a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
+
+    /* Responsive for mobile */
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+      }
+      .navbar a {
+        margin: 5px 0;
+      }
+    }
+
+p  {
+  text-align: center;
+  font-family: "playfair display";
+  font-style: italic;
+  font-style: bold;
+  font-size: 50px;
+  text-shadow: 10px;
+  color: brown;
+  
+}
+  
+   .card-bg {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 250px;       /* Set card height */
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  align-items: flex-end; /* Text at bottom */
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+/* Dark overlay for text */
+.card-overlay {
+  width: 100%;
+  padding: 10px;
+  background: rgba(228, 215, 215, 0.5); /* Dark overlay */
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  color: black;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin: 0;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  margin: 5px 0 0;
+}
+
+/* Hover effect */
+.card-bg:hover {
+  transform: scale(1.05);
+}

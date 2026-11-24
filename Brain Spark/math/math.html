@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mathematics | QuizHub</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #faf7ff;
+            color: #292235;
+            transition: 0.4s;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 5px 25px rgba(120, 80, 160, 0.08);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #8d4de8 !important;
+        }
+
+        .nav-link {
+            color: #4d4258 !important;
+            font-weight: 500;
+            margin: 0 8px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #9b5de5 !important;
+        }
+
+        .theme-btn {
+            border: none;
+            background: #eee5ff;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* ================= HERO ================= */
+
+        .math-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+
+            background: linear-gradient(
+                135deg,
+                #f7edff,
+                #f4f0ff,
+                #fff2fa
+            );
+
+            padding: 80px 20px;
+        }
+
+        .math-icon {
+            width: 90px;
+            height: 90px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 25px;
+
+            border-radius: 28px;
+
+            background: rgba(255,255,255,0.8);
+
+            box-shadow:
+                0 15px 40px rgba(120,70,170,0.12);
+
+            font-size: 45px;
+
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        .math-hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #8d4de8, #d65fa8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .math-hero p {
+            max-width: 700px;
+            margin: auto;
+
+            color: #6c6375;
+
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* ================= STATS ================= */
+
+        .stats {
+            margin-top: -40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 40px rgba(100,70,140,0.09);
+        }
+
+        .stat-card h3 {
+            color: #8d4de8;
+            font-weight: 700;
+        }
+
+        .stat-card p {
+            margin: 0;
+            color: #756c80;
+            font-size: 14px;
+        }
+
+        /* ================= SECTION ================= */
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+        }
+
+        .section-title p {
+            color: #756c80;
+            margin-top: 10px;
+        }
+
+        /* ================= TOPIC CARDS ================= */
+
+        .topic-card {
+            background: rgba(255,255,255,0.85);
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            height: 100%;
+
+            box-shadow:
+                0 10px 30px rgba(100,70,140,0.07);
+
+            transition: 0.35s;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 20px 45px rgba(100,70,140,0.14);
+        }
+
+        .topic-icon {
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #f0e5ff;
+
+            border-radius: 16px;
+
+            font-size: 25px;
+
+            margin-bottom: 20px;
+        }
+
+        .topic-card h4 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .topic-card p {
+            color: #756c80;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .topic-btn {
+            border: none;
+
+            background: #f1e5ff;
+
+            color: #8043c7;
+
+            padding: 8px 17px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .topic-btn:hover {
+            background: #8d4de8;
+            color: white;
+        }
+
+        /* ================= DIFFICULTY ================= */
+
+        .difficulty-card {
+            border-radius: 25px;
+
+            padding: 35px;
+
+            background: white;
+
+            text-align: center;
+
+            height: 100%;
+
+            box-shadow:
+                0 10px 30px rgba(100,70,140,0.07);
+
+            transition: 0.3s;
+        }
+
+        .difficulty-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .difficulty-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .difficulty-card h4 {
+            font-weight: 700;
+        }
+
+        .difficulty-card p {
+            color: #756c80;
+            font-size: 14px;
+        }
+
+        .difficulty-btn {
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+
+            background: linear-gradient(
+                90deg,
+                #8d4de8,
+                #d65fa8
+            );
+
+            color: white;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .difficulty-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(141,77,232,0.25);
+        }
+
+        /* ================= INFO BOX ================= */
+
+        .info-box {
+            background: linear-gradient(
+                135deg,
+                #f0e5ff,
+                #ffe8f3
+            );
+
+            border-radius: 30px;
+
+            padding: 50px;
+
+            text-align: center;
+        }
+
+        .info-box h2 {
+            font-weight: 700;
+        }
+
+        .info-box p {
+            max-width: 650px;
+            margin: 15px auto 25px;
+
+            color: #665d70;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #211a2b;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 45px 0;
+        }
+
+        footer p {
+            color: #bcb3c5;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        /* ================= ANIMATION ================= */
+
+        @keyframes floating {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+        }
+
+        /* ================= DARK MODE ================= */
+
+        body.dark {
+            background: #17131e;
+            color: #eee7f5;
+        }
+
+        body.dark .navbar {
+            background: rgba(30,25,38,0.9);
+        }
+
+        body.dark .nav-link {
+            color: #ddd3e7 !important;
+        }
+
+        body.dark .math-hero {
+            background: linear-gradient(
+                135deg,
+                #21182b,
+                #181520,
+                #281a27
+            );
+        }
+
+        body.dark .math-hero p,
+        body.dark .section-title p,
+        body.dark .topic-card p,
+        body.dark .difficulty-card p,
+        body.dark .info-box p {
+            color: #bdb3c8;
+        }
+
+        body.dark .stat-card,
+        body.dark .topic-card,
+        body.dark .difficulty-card {
+            background: #251e2d;
+            color: #eee7f5;
+        }
+
+        body.dark .info-box {
+            background: linear-gradient(
+                135deg,
+                #302342,
+                #382432
+            );
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 768px) {
+
+            .math-hero {
+                min-height: 65vh;
+            }
+
+            .stats {
+                margin-top: 20px;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .info-box {
+                padding: 35px 20px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg sticky-top">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            🧠 QuizHub
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#topics">
+                        Topics
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#difficulty">
+                        Difficulty
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+
+                    <button
+                        class="theme-btn"
+                        id="themeBtn">
+
+                        🌙
+
+                    </button>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="math-hero">
+
+    <div class="container">
+
+        <div class="math-icon">
+            📐
+        </div>
+
+        <h1>
+            Mathematics
+            <span class="gradient-text">
+                Quiz
+            </span>
+        </h1>
+
+        <p>
+            Challenge yourself with mathematics questions
+            covering important concepts, formulas,
+            calculations and problem-solving.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <h3>100+</h3>
+
+                    <p>
+                        Questions
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <h3>3</h3>
+
+                    <p>
+                        Difficulty Levels
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <h3>∞</h3>
+
+                    <p>
+                        Attempts
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TOPICS ================= -->
+
+<section class="section" id="topics">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Choose a Topic
+            </h2>
+
+            <p>
+                Select what you want to practice.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- Algebra -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="topic-card">
+
+                    <div class="topic-icon">
+                        𝑥
+                    </div>
+
+                    <h4>
+                        Algebra
+                    </h4>
+
+                    <p>
+                        Practice equations, expressions,
+                        polynomials and algebraic concepts.
+                    </p>
+
+                    <button class="topic-btn">
+                        Practice →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Geometry -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="topic-card">
+
+                    <div class="topic-icon">
+                        📐
+                    </div>
+
+                    <h4>
+                        Geometry
+                    </h4>
+
+                    <p>
+                        Test your knowledge of shapes,
+                        angles, areas, volumes and theorems.
+                    </p>
+
+                    <button class="topic-btn">
+                        Practice →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Arithmetic -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="topic-card">
+
+                    <div class="topic-icon">
+                        ➗
+                    </div>
+
+                    <h4>
+                        Arithmetic
+                    </h4>
+
+                    <p>
+                        Practice numbers, fractions,
+                        percentages, ratios and calculations.
+                    </p>
+
+                    <button class="topic-btn">
+                        Practice →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Trigonometry -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="topic-card">
+
+                    <div class="topic-icon">
+                        θ
+                    </div>
+
+                    <h4>
+                        Trigonometry
+                    </h4>
+
+                    <p>
+                        Test your understanding of angles,
+                        identities and trigonometric functions.
+                    </p>
+
+                    <button class="topic-btn">
+                        Practice →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Statistics -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="topic-card">
+
+                    <div class="topic-icon">
+                        📊
+                    </div>
+
+                    <h4>
+                        Statistics
+                    </h4>
+
+                    <p>
+                        Practice mean, median, mode,
+                        probability and data interpretation.
+                    </p>
+
+                    <button class="topic-btn">
+                        Practice →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Calculus -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="topic-card">
+
+                    <div class="topic-icon">
+                        ∫
+                    </div>
+
+                    <h4>
+                        Calculus
+                    </h4>
+
+                    <p>
+                        Challenge yourself with limits,
+                        differentiation and integration.
+                    </p>
+
+                    <button class="topic-btn">
+                        Practice →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DIFFICULTY ================= -->
+
+<section class="section" id="difficulty">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Choose Your Difficulty
+            </h2>
+
+            <p>
+                How confident are you?
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- Easy -->
+
+            <div class="col-md-4">
+
+                <div class="difficulty-card">
+
+                    <div class="difficulty-icon">
+                        🌱
+                    </div>
+
+                    <h4>
+                        Easy
+                    </h4>
+
+                    <p>
+                        Perfect for beginners and
+                        concept revision.
+                    </p>
+
+                    <button class="difficulty-btn">
+                        Start Easy
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Medium -->
+
+            <div class="col-md-4">
+
+                <div class="difficulty-card">
+
+                    <div class="difficulty-icon">
+                        🎯
+                    </div>
+
+                    <h4>
+                        Medium
+                    </h4>
+
+                    <p>
+                        Test your understanding with
+                        moderately challenging questions.
+                    </p>
+
+                    <button class="difficulty-btn">
+                        Start Medium
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Hard -->
+
+            <div class="col-md-4">
+
+                <div class="difficulty-card">
+
+                    <div class="difficulty-icon">
+                        🔥
+                    </div>
+
+                    <h4>
+                        Hard
+                    </h4>
+
+                    <p>
+                        Challenge yourself with
+                        advanced problem-solving questions.
+                    </p>
+
+                    <button class="difficulty-btn">
+                        Start Hard
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="container">
+
+    <div class="info-box">
+
+        <h2>
+            Ready to solve?
+        </h2>
+
+        <p>
+            Choose your topic and difficulty,
+            then put your mathematics skills to the test.
+        </p>
+
+        <a
+            href="#topics"
+            class="btn difficulty-btn">
+
+            Start Practicing →
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container">
+
+        <h4>
+            🧠 QuizHub
+        </h4>
+
+        <p>
+            Learn. Practice. Improve.
+        </p>
+
+        <p>
+            © 2026 QuizHub
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+
+    /* ================= DARK MODE ================= */
+
+    const themeBtn =
+        document.getElementById("themeBtn");
+
+    themeBtn.addEventListener("click", function () {
+
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+
+            themeBtn.textContent = "☀️";
+
+            localStorage.setItem("theme", "dark");
+
+        } else {
+
+            themeBtn.textContent = "🌙";
+
+            localStorage.setItem("theme", "light");
+
+        }
+
+    });
+
+
+    /* ================= LOAD THEME ================= */
+
+    const savedTheme =
+        localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add("dark");
+
+        themeBtn.textContent = "☀️";
+
+    }
+
+</script>
+
+</body>
+</html>

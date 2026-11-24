@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QuizHub | Learn. Practice. Improve.</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #faf7ff;
+            color: #292235;
+            transition: 0.4s;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 5px 25px rgba(120, 80, 160, 0.08);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #8d4de8 !important;
+        }
+
+        .nav-link {
+            color: #4d4258 !important;
+            font-weight: 500;
+            margin: 0 8px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #9b5de5 !important;
+        }
+
+        .theme-btn {
+            border: none;
+            background: #eee5ff;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(
+                135deg,
+                #f9edff,
+                #f5f0ff,
+                #fff4fa
+            );
+        }
+
+        .hero-content {
+            animation: fadeUp 1s ease;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: #eadcff;
+            color: #8043c7;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #8d4de8, #df62a5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #665d70;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 620px;
+        }
+
+        .hero-buttons {
+            margin-top: 30px;
+        }
+
+        .btn-main {
+            background: linear-gradient(90deg, #8d4de8, #d65fa8);
+            color: white;
+            border: none;
+            padding: 13px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(141, 77, 232, 0.25);
+            transition: 0.3s;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            color: white;
+            box-shadow: 0 15px 30px rgba(141, 77, 232, 0.35);
+        }
+
+        .btn-outline {
+            border: 2px solid #9b62df;
+            color: #824bc7;
+            padding: 11px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-left: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: #9b62df;
+            color: white;
+        }
+
+        /* ================= HERO VISUAL ================= */
+
+        .quiz-visual {
+            position: relative;
+            height: 420px;
+        }
+
+        .quiz-box {
+            position: absolute;
+            width: 330px;
+            padding: 25px;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            box-shadow: 0 25px 60px rgba(100,70,140,0.15);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(3deg);
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        .quiz-box h4 {
+            font-weight: 700;
+        }
+
+        .question-line {
+            background: #f0e8ff;
+            padding: 12px;
+            border-radius: 12px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .answer {
+            padding: 10px 15px;
+            background: #fff;
+            border-radius: 10px;
+            margin: 8px 0;
+            font-size: 14px;
+            border: 1px solid #eee;
+        }
+
+        .answer.correct {
+            background: #e9f9ef;
+            border-color: #a8dfba;
+        }
+
+        /* Floating circles */
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(1px);
+            opacity: 0.6;
+        }
+
+        .bubble.one {
+            width: 130px;
+            height: 130px;
+            background: #e7cfff;
+            top: 30px;
+            right: 30px;
+        }
+
+        .bubble.two {
+            width: 90px;
+            height: 90px;
+            background: #ffcce7;
+            bottom: 40px;
+            left: 30px;
+        }
+
+        /* ================= SECTION ================= */
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-weight: 700;
+            font-size: 2.5rem;
+        }
+
+        .section-title p {
+            color: #756c80;
+            margin-top: 10px;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 45px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 16px 22px;
+            border-radius: 40px;
+            background: white;
+            box-shadow: 0 8px 30px rgba(100,70,140,0.1);
+            font-family: inherit;
+        }
+
+        /* ================= SUBJECT CARDS ================= */
+
+        .subject-card {
+            background: rgba(255,255,255,0.8);
+            border: 1px solid rgba(150,120,180,0.1);
+            border-radius: 22px;
+            padding: 30px;
+            height: 100%;
+            transition: 0.35s;
+            box-shadow: 0 10px 30px rgba(100,70,140,0.07);
+        }
+
+        .subject-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(100,70,140,0.14);
+        }
+
+        .subject-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            background: #f0e5ff;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .subject-card h4 {
+            font-weight: 700;
+        }
+
+        .subject-card p {
+            color: #756c80;
+            font-size: 14px;
+        }
+
+        .difficulty {
+            display: inline-block;
+            font-size: 12px;
+            background: #f7efff;
+            color: #8951c5;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+        }
+
+        .start-link {
+            text-decoration: none;
+            color: #8d4de8;
+            font-weight: 600;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .feature-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h5 {
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #756c80;
+            font-size: 14px;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            background: linear-gradient(135deg, #8d4de8, #d65fa8);
+            color: white;
+            border-radius: 35px;
+            padding: 70px 30px;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .cta h2 {
+            font-weight: 700;
+            font-size: 2.5rem;
+        }
+
+        .cta p {
+            opacity: 0.9;
+            margin: 15px auto 25px;
+            max-width: 600px;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #8849ce;
+            border: none;
+            padding: 13px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #211a2b;
+            color: white;
+            padding: 45px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: #bcb3c5;
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        /* ================= ANIMATIONS ================= */
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translate(-50%, -50%) rotate(3deg);
+            }
+
+            50% {
+                transform: translate(-50%, -54%) rotate(-2deg);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ================= DARK MODE ================= */
+
+        body.dark {
+            background: #17131e;
+            color: #eee7f5;
+        }
+
+        body.dark .navbar {
+            background: rgba(30,25,38,0.85);
+        }
+
+        body.dark .nav-link {
+            color: #ddd3e7 !important;
+        }
+
+        body.dark .hero {
+            background: linear-gradient(
+                135deg,
+                #21182b,
+                #181520,
+                #281a27
+            );
+        }
+
+        body.dark .hero p,
+        body.dark .section-title p,
+        body.dark .subject-card p,
+        body.dark .feature-card p {
+            color: #bdb3c8;
+        }
+
+        body.dark .quiz-box,
+        body.dark .subject-card {
+            background: rgba(35,29,44,0.85);
+            border-color: rgba(255,255,255,0.06);
+        }
+
+        body.dark .answer {
+            background: #292232;
+            border-color: #3b3145;
+        }
+
+        body.dark .question-line {
+            background: #342644;
+        }
+
+        body.dark .search-box input {
+            background: #292232;
+            color: white;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 768px) {
+
+            .hero {
+                text-align: center;
+                padding: 80px 0;
+            }
+
+            .hero p {
+                margin: auto;
+            }
+
+            .btn-outline {
+                display: inline-block;
+                margin-left: 0;
+                margin-top: 12px;
+            }
+
+            .quiz-visual {
+                height: 350px;
+                margin-top: 30px;
+            }
+
+            .quiz-box {
+                width: 290px;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            🧠 QuizHub
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#subjects">Subjects</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#features">Features</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">Dashboard</a>
+                </li>
+
+                <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                    <button class="theme-btn" id="themeBtn">
+                        🌙
+                    </button>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-7 hero-content">
+
+                <span class="hero-tag">
+                    ✨ Learn • Practice • Improve
+                </span>
+
+                <h1>
+                    Challenge your
+                    <span class="gradient-text">
+                        knowledge.
+                    </span>
+                </h1>
+
+                <p>
+                    Welcome to QuizHub — an interactive quiz platform
+                    where you can test your knowledge, practice important
+                    concepts, and improve your skills across different
+                    subjects.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#subjects" class="btn btn-main">
+                        Explore Quizzes →
+                    </a>
+
+                    <a href="#features" class="btn btn-outline">
+                        Discover More
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-5">
+
+                <div class="quiz-visual">
+
+                    <div class="bubble one"></div>
+                    <div class="bubble two"></div>
+
+                    <div class="quiz-box">
+
+                        <h4>🎯 Quick Challenge</h4>
+
+                        <div class="question-line">
+                            What does CPU stand for?
+                        </div>
+
+                        <div class="answer">
+                            Central Program Unit
+                        </div>
+
+                        <div class="answer correct">
+                            ✓ Central Processing Unit
+                        </div>
+
+                        <div class="answer">
+                            Computer Processing Utility
+                        </div>
+
+                        <div class="answer">
+                            Central Process Utility
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SUBJECTS ================= -->
+
+<section class="section" id="subjects">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Explore Subjects
+            </h2>
+
+            <p>
+                Choose a subject and test what you know.
+            </p>
+
+        </div>
+
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="subjectSearch"
+                placeholder="🔎 Search subjects..."
+            >
+
+        </div>
+
+
+        <div class="row g-4" id="subjectContainer">
+
+
+            <!-- Mathematics -->
+
+            <div class="col-md-6 col-lg-4 subject-item">
+
+                <div class="subject-card">
+
+                    <div class="subject-icon">
+                        📐
+                    </div>
+
+                    <span class="difficulty">
+                        Easy • Medium • Hard
+                    </span>
+
+                    <h4>Mathematics</h4>
+
+                    <p>
+                        Test your mathematical concepts,
+                        calculations, formulas and problem-solving skills.
+                    </p>
+
+                    <a href="math.html"
+                       class="start-link">
+                        Start Quiz →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Science -->
+
+            <div class="col-md-6 col-lg-4 subject-item">
+
+                <div class="subject-card">
+
+                    <div class="subject-icon">
+                        🔬
+                    </div>
+
+                    <span class="difficulty">
+                        Easy • Medium • Hard
+                    </span>
+
+                    <h4>Science</h4>
+
+                    <p>
+                        Explore questions from physics, chemistry,
+                        biology and general science.
+                    </p>
+
+                    <a href="quiz.html?subject=science"
+                       class="start-link">
+                        Start Quiz →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Social Science -->
+
+            <div class="col-md-6 col-lg-4 subject-item">
+
+                <div class="subject-card">
+
+                    <div class="subject-icon">
+                        🌍
+                    </div>
+
+                    <span class="difficulty">
+                        Easy • Medium • Hard
+                    </span>
+
+                    <h4>Social Science</h4>
+
+                    <p>
+                        Practice history, geography, civics
+                        and other social science topics.
+                    </p>
+
+                    <a href="quiz.html?subject=social"
+                       class="start-link">
+                        Start Quiz →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Operating System -->
+
+            <div class="col-md-6 col-lg-4 subject-item">
+
+                <div class="subject-card">
+
+                    <div class="subject-icon">
+                        💻
+                    </div>
+
+                    <span class="difficulty">
+                        Easy • Medium • Hard
+                    </span>
+
+                    <h4>Operating System</h4>
+
+                    <p>
+                        Practice processes, memory management,
+                        scheduling, file systems and more.
+                    </p>
+
+                    <a href="quiz.html?subject=os"
+                       class="start-link">
+                        Start Quiz →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Python -->
+
+            <div class="col-md-6 col-lg-4 subject-item">
+
+                <div class="subject-card">
+
+                    <div class="subject-icon">
+                        🐍
+                    </div>
+
+                    <span class="difficulty">
+                        Easy • Medium • Hard
+                    </span>
+
+                    <h4>Python</h4>
+
+                    <p>
+                        Test your knowledge of Python syntax,
+                        variables, loops, functions and more.
+                    </p>
+
+                    <a href="quiz.html?subject=python"
+                       class="start-link">
+                        Start Quiz →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- General Knowledge -->
+
+            <div class="col-md-6 col-lg-4 subject-item">
+
+                <div class="subject-card">
+
+                    <div class="subject-icon">
+                        🧠
+                    </div>
+
+                    <span class="difficulty">
+                        Easy • Medium • Hard
+                    </span>
+
+                    <h4>General Knowledge</h4>
+
+                    <p>
+                        Challenge yourself with interesting
+                        questions from different areas.
+                    </p>
+
+                    <a href="quiz.html?subject=gk"
+                       class="start-link">
+                        Start Quiz →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="section" id="features">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                More Than Just Quizzes
+            </h2>
+
+            <p>
+                Track your progress and make learning more engaging.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">🏆</div>
+
+                    <h5>High Scores</h5>
+
+                    <p>
+                        Keep track of your best scores
+                        for every subject.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">📊</div>
+
+                    <h5>Performance</h5>
+
+                    <p>
+                        See your accuracy, attempts
+                        and quiz performance.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">🔥</div>
+
+                    <h5>Streaks</h5>
+
+                    <p>
+                        Build a learning streak by
+                        completing quizzes regularly.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">🎯</div>
+
+                    <h5>Difficulty Levels</h5>
+
+                    <p>
+                        Choose between Easy,
+                        Medium and Hard.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="container">
+
+    <div class="cta">
+
+        <h2>
+            Ready to test yourself?
+        </h2>
+
+        <p>
+            Pick a subject, choose your difficulty
+            and see how much you know.
+        </p>
+
+        <a href="#subjects" class="btn cta-btn">
+            Start Exploring →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container">
+
+        <h4>🧠 QuizHub</h4>
+
+        <p>
+            Learn. Practice. Improve.
+        </p>
+
+        <p>
+            © 2026 QuizHub. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+
+    /* ================= SUBJECT SEARCH ================= */
+
+    const searchInput = document.getElementById("subjectSearch");
+    const subjectItems = document.querySelectorAll(".subject-item");
+
+    searchInput.addEventListener("input", function () {
+
+        const searchValue = this.value.toLowerCase();
+
+        subjectItems.forEach(function (item) {
+
+            const subjectName =
+                item.querySelector("h4").textContent.toLowerCase();
+
+            if (subjectName.includes(searchValue)) {
+                item.style.display = "";
+            } else {
+                item.style.display = "none";
+            }
+
+        });
+
+    });
+
+
+    /* ================= DARK / LIGHT MODE ================= */
+
+    const themeBtn = document.getElementById("themeBtn");
+
+    themeBtn.addEventListener("click", function () {
+
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+
+            themeBtn.textContent = "☀️";
+
+            localStorage.setItem("theme", "dark");
+
+        } else {
+
+            themeBtn.textContent = "🌙";
+
+            localStorage.setItem("theme", "light");
+
+        }
+
+    });
+
+
+    /* ================= LOAD SAVED THEME ================= */
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add("dark");
+        themeBtn.textContent = "☀️";
+
+    }
+
+</script>
+ 
+</body>
+</html>

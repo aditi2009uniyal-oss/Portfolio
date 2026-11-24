@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PPT Presentation</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #f7f3eb;
+      font-family: Poppins, sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #3b3b3b;
+    }
+
+    p.intro {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 40px;
+    }
+
+    .ppt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 30px;
+      width: 100%;
+      justify-items: center;
+    }
+
+    .ppt-box {
+      width: 100%;
+      text-align: center;
+    }
+
+    iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      border-radius: 12px;
+    }
+
+    .ppt-title {
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Heading + Intro -->
+    <h1>My Presentation Collection</h1>
+    <p class="intro">
+      Here are some of the presentations I have created across different subjects.  
+      Click on any presentation to explore my work!
+    </p>
+
+    <div class="ppt-grid">
+
+      <!-- PPT 1 -->
+      <div class="ppt-box">
+        <iframe 
+          src="https://docs.google.com/presentation/d/1J863XJH1k5IYW7KXQAVRWxqFNJGYecMd/embed?start=false&loop=false&delayms=3000"
+          allowfullscreen="true">
+        </iframe>
+        <div class="ppt-title">Cloud Computing</div>
+      </div>
+
+      <!-- PPT 2 -->
+      <div class="ppt-box">
+        <iframe 
+          src="https://docs.google.com/presentation/d/1d34EYll31f5Qlvyy2b-quW7zJUowaGdR/embed?start=false&loop=false&delayms=3000"
+          allowfullscreen="true">
+        </iframe>
+        <div class="ppt-title">C programming</div>
+      </div>
+
+      <!-- PPT 3 -->
+      <div class="ppt-box">
+        <iframe 
+          src="https://docs.google.com/presentation/d/1yg9Lz0bK330R_Gk0JnUwvlhs1YtKSayf/embed?start=false&loop=false&delayms=3000"
+          allowfullscreen="true">
+        </iframe>
+        <div class="ppt-title">My inspiration</div>
+      </div>
+
+      <!-- PPT 4 -->
+      <div class="ppt-box">
+        <iframe 
+          src="https://docs.google.com/presentation/d/1Q-Az-h1vCzGDUwYl7U-KdidvjqiHYorw/embed?start=false&loop=false&delayms=3000"
+          allowfullscreen="true">
+        </iframe>
+        <div class="ppt-title">Fun game</div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
